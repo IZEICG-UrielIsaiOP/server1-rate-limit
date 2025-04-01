@@ -47,7 +47,6 @@ app.use((req, res, next) => {
       url: req.url,
       path: req.path,
       query: req.query || {},
-      params: req.params || {},
       statusCode: res.statusCode,
       responseTime: `${responseTime}ms`,
       ip: req.ip || req.connection.remoteAddress,
