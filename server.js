@@ -15,7 +15,7 @@ const SECRET_KEY = process.env.SECRET_KEY || "supersecretkey";
 // Middleware
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://frontendproyectofinal.onrender.com" // 👈 reemplaza con tu dominio real
+  "https://frontendproyectofinal.onrender.com" 
 ];
 
 app.use(cors({
