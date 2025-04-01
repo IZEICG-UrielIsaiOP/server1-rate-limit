@@ -28,6 +28,7 @@ app.use(cors({
   },
   credentials: true
 }));
+app.use(bodyParser.json()); 
 
 const limiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 minutos
