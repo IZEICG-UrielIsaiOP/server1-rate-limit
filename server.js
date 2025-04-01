@@ -12,22 +12,19 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 const SECRET_KEY = process.env.SECRET_KEY || "supersecretkey";
 
-// Middleware
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://frontendproyectofinal.onrender.com" 
-];
+const corsOptions = {
+  origin: [
+    "http://localhost:3000",
+    "https://frontendproyectofinal.onrender.com"
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+};
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("No autorizado por CORS"));
-    }
-  },
-  credentials: true
-}));
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
+
 app.use(bodyParser.json()); 
 
 const limiter = rateLimit({
