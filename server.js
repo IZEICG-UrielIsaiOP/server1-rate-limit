@@ -13,8 +13,21 @@ const PORT = process.env.PORT || 5001;
 const SECRET_KEY = process.env.SECRET_KEY || "supersecretkey";
 
 // Middleware
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
-app.use(bodyParser.json());
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://frontendproyectofinal.onrender.com" // 👈 reemplaza con tu dominio real
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("No autorizado por CORS"));
+    }
+  },
+  credentials: true
+}));
 
 const limiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 minutos
