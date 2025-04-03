@@ -91,7 +91,8 @@ app.get("/api/getInfo", (req, res) => {
     nodeVersion: process.version,
     alumno: "Uriel Isaí Ortiz Pérez",
     grupo: "IDGS11",
-    mensaje: "API REST con autenticación JWT + MFA + Rate Limit + Logs"
+    profesor: "M.C.C. Emmanuel Martínez Hernández",
+    mensaje: "Servidor 2 sin rate limit. Guarda logs en 'logs2'"
   });
 });
 
