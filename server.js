@@ -27,12 +27,13 @@ app.options("*", cors(corsOptions));
 
 app.use(bodyParser.json()); 
 
-const limiter = rateLimit({
-  windowMs: 10 * 60 * 1000, // 10 minutos
+/*const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000, 
   max: 100,
   message: { statusCode: 429, message: "Demasiadas peticiones, intenta más tarde" }
 });
 app.use(limiter);
+*/
 
 app.use((req, res, next) => {
   const startTime = Date.now();
@@ -89,7 +90,7 @@ app.get("/api/getInfo", (req, res) => {
   res.json({
     nodeVersion: process.version,
     alumno: "Uriel Isaí Ortiz Pérez",
-    grupo: "4A Programación",
+    grupo: "IDGS11",
     mensaje: "API REST con autenticación JWT + MFA + Rate Limit + Logs"
   });
 });
@@ -138,7 +139,6 @@ app.post("/api/register", async (req, res) => {
 });
 
 
-// ✅ API 3: Login (con MFA)
 app.post("/api/login", async (req, res) => {
   try {
     const { email, password, token } = req.body;
